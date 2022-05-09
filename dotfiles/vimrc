@@ -1,0 +1,101 @@
+syntax on           "Enable Syntax Highlighting
+set background=dark "They says I need this for Syntax Highlighting on dark bg
+set visualbell "Switch the ATTN from bell to visual
+set showcmd "Enable the visual aid for commands
+set ruler "Enable the ruler (line/column info at the bottom of buffer)
+"set listchars=tab:..,trail:_,extends:>,precedes:<,nbsp:~ set showmode  "Show current mode
+set showcmd   "Show me what I type
+	
+"Encoding
+set encoding=utf-8 "Set default encoding to UTF-8
+
+"Speed tweaks
+set lazyredraw "any anction that is not typed will not cause the screen to redraw
+set ttyfast    "indicase a fast terminal connection; improves smoothness of redrawing
+
+"Search
+set hlsearch   "highlight search strings
+set ignorecase "ignore case when searching
+set smartcase  "except when search string includes a capital letter
+
+"Set tab to 4 spaces
+set tabstop=2    "spaces per tab
+set shiftwidth=2 " spaces per tab when shifting
+set expandtab    "When you press tab vim wil insert spaces 
+set shiftround "Round indent to multiple of shiftwidth
+
+set autoindent "Enable the autoindenting (i.e. new line indented like old one)
+
+set complete-=i "Do not scan current and included files during completion
+
+"MAPPINGS
+"Use noremap for preventing recursive mapping
+"ARROW KEYS ARE UNACCEPTABLE
+"Remapping these pevent their use.
+""noremap <Left> :echo "Use h instead of the Left Arrow!"<cr>
+""noremap <Right> :echo "Use l instead of the Right Arrow!"<cr>
+""noremap <Up> :echo "Use k instead of the UpArrow!"<cr>
+""noremap <Down> :echo "Use j instead of the Down Arrow!"<cr> 
+
+"Use F5 for toggling hlsearch
+noremap [18~ :set hlsearch!<cr>
+
+"Use F6 for toggling display of invisible characters
+noremap [19~ :set list!<cr>
+
+"Use F7 for toggling line highlight
+noremap [15~ :set cursorline!<cr>
+
+"Use F8 for toggling paste mode
+noremap [17~ :set paste!<cr>
+    
+"Remap C-n and C-p in order to get the advantages of up and down arrow (i.e. completion)
+cnoremap <c-n>  <down>
+cnoremap <c-p>  <up>
+
+"FORMATTING
+set formatoptions=qrn1  " allow format of comments (q)
+                        " insert comment leader if newline (r)
+                        " recognize lists (n)
+                        " break line before one letter words (1)
+"Highlighting
+set colorcolumn=80 "higlight the 80th column
+hi ColorColumn ctermbg=darkgray "choose gray for highlighting
+
+"Playing with folds
+set foldenable "enable folding
+set foldlevelstart=10 "open most folds by default (min 0 max 99)
+set foldnestmax=10 "10 nested fold max
+set foldmethod=indent "fold based on indent level
+
+"space open/closes folds
+nnoremap <space> za
+
+"tell vim to indent .tex files as laTeX
+let g:tex_flavor='latex'
+
+" setlocal fo+=aw "MUTT BOH
+"timeout boh
+ "set notimeout
+ "set ttimeout
+ "set ttimeoutlen=10
+
+"telll NvimR the modifier key it will use to communicate with R
+let maplocalleader = "_" 
+
+filetype plugin on
+" use the following to also enable language-dependent indenting.
+filetype plugin indent on
+
+"Move between ALE errors
+nmap <silent> <C-k> <Plug>(ale_previous_wrap)
+nmap <silent> <C-j> <Plug>(ale_next_wrap)
+
+"fonts for vim-airline
+let g:airline_powerline_fonts = 1
+
+"tell Nvim to revert to vim behaviour when _ is pressed in insert mode.
+let R_assign = 0
+
+"Useful R macros
+let @q = 'i la ' "put spaces around the equal sign
